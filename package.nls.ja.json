@@ -1,0 +1,16 @@
+{
+  "displayName": "Auto Workspace Creator",
+  "description": "フォルダを開いた際に安全な条件を満たす場合のみ .code-workspace を自動作成し、ワークスペースとして開き直します。",
+  "cfg.title": "Auto Workspace Creator",
+  "cfg.enabled": "適切な場合に限ってワークスペースを自動作成します。",
+  "cfg.confirmationMode": "ワークスペース作成前の確認ポリシー。",
+  "cfg.writeToRepoRoot": "開いているフォルダが Git レポ内なら、レポジトリ直下に作成します。",
+  "cfg.wsNamePattern": "ワークスペースのファイル名パターン。",
+  "cfg.sanitizeName": "生成されるファイル名から無効文字を除去します。",
+  "cfg.searchDepth": "既存ワークスペース検出のディレクトリ走査上限。",
+  "cfg.ignorePaths": "安全のために無視するパス接頭辞。",
+  "cfg.keyProjectFiles": "これらのファイルの存在はプロジェクトを示します。*.sln のグロブに対応。",
+  "cmd.createNow": "Auto Workspace Creator: 今すぐ作成",
+  "cmd.findNearest": "Auto Workspace Creator: 近傍を探して開く",
+  "cmd.toggle": "Auto Workspace Creator: 有効/無効を切替"
+}

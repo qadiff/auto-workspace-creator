@@ -1,0 +1,16 @@
+{
+  "displayName": "Auto Workspace Creator",
+  "description": "Politely auto-create a .code-workspace when opening a folder, using safe heuristics, and reopen VS Code on it.",
+  "cfg.title": "Auto Workspace Creator",
+  "cfg.enabled": "Enable automatic workspace creation when appropriate.",
+  "cfg.confirmationMode": "Prompt policy before creating a workspace file.",
+  "cfg.writeToRepoRoot": "If the open folder is inside a Git repo, create the workspace at the repo root.",
+  "cfg.wsNamePattern": "Pattern for naming the workspace file.",
+  "cfg.sanitizeName": "Sanitize invalid characters in the generated workspace filename.",
+  "cfg.searchDepth": "Directory traversal limits for workspace detection.",
+  "cfg.ignorePaths": "Path prefixes to ignore for safety.",
+  "cfg.keyProjectFiles": "Presence of any of these files signals a project. Glob patterns supported for *.sln.",
+  "cmd.createNow": "Auto Workspace Creator: Create Now",
+  "cmd.findNearest": "Auto Workspace Creator: Find & Open Nearest",
+  "cmd.toggle": "Auto Workspace Creator: Enable/Disable"
+}

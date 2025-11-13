@@ -1,0 +1,149 @@
+{
+  "name": "auto-workspace-creator",
+  "displayName": "%displayName%",
+  "publisher": "qadiff",
+  "description": "%description%",
+  "version": "0.0.4",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Productivity",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:autoWorkspaceCreator.createNow",
+    "onCommand:autoWorkspaceCreator.findAndOpenNearest",
+    "onCommand:autoWorkspaceCreator.toggle"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "autoWorkspaceCreator.createNow",
+        "title": "%cmd.createNow%"
+      },
+      {
+        "command": "autoWorkspaceCreator.findAndOpenNearest",
+        "title": "%cmd.findNearest%"
+      },
+      {
+        "command": "autoWorkspaceCreator.toggle",
+        "title": "%cmd.toggle%"
+      }
+    ],
+    "configuration": {
+      "title": "%cfg.title%",
+      "properties": {
+        "autoWorkspaceCreator.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "%cfg.enabled%"
+        },
+        "autoWorkspaceCreator.confirmationMode": {
+          "type": "string",
+          "enum": [
+            "alwaysAsk",
+            "askOncePerRepo",
+            "silentIfSafe",
+            "never"
+          ],
+          "default": "alwaysAsk",
+          "description": "%cfg.confirmationMode%"
+        },
+        "autoWorkspaceCreator.writeToRepoRootIfDetected": {
+          "type": "boolean",
+          "default": true,
+          "description": "%cfg.writeToRepoRoot%"
+        },
+        "autoWorkspaceCreator.workspaceFileNamePattern": {
+          "type": "string",
+          "default": "${folderName}.code-workspace",
+          "description": "%cfg.wsNamePattern%"
+        },
+        "autoWorkspaceCreator.sanitizeName": {
+          "type": "boolean",
+          "default": true,
+          "description": "%cfg.sanitizeName%"
+        },
+        "autoWorkspaceCreator.searchDepth": {
+          "type": "object",
+          "default": {
+            "up": 10,
+            "down": 1
+          },
+          "description": "%cfg.searchDepth%"
+        },
+        "autoWorkspaceCreator.ignorePaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "~",
+            "/etc",
+            "/var",
+            "/tmp",
+            "node_modules",
+            "C:\\\\Windows",
+            "C:\\\\Program Files",
+            "/System",
+            "/Library"
+          ],
+          "description": "%cfg.ignorePaths%"
+        },
+        "autoWorkspaceCreator.keyProjectFiles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            ".git",
+            "package.json",
+            "pnpm-workspace.yaml",
+            "pyproject.toml",
+            "requirements.txt",
+            "Pipfile",
+            "Cargo.toml",
+            "go.mod",
+            "pom.xml",
+            "build.gradle",
+            "*.sln"
+          ],
+          "description": "%cfg.keyProjectFiles%"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -w -p .",
+    "package": "vsce package",
+    "test": "mocha --require ts-node/register test/**/*.test.ts",
+    "test:e2e": "npm run compile && node ./scripts/e2e.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^20.12.12",
+    "vsce": "^2.15.0",
+    "vscode": "^1.1.37",
+    "mocha": "^10.7.3",
+    "@types/mocha": "^10.0.6",
+    "chai": "^4.5.0",
+    "@types/chai": "^4.3.16",
+    "vscode-nls-dev": "^4.0.0",
+    "ts-node": "^10.9.2"
+  },
+  "icon": "icon.png",
+  "keywords": [
+    "auto",
+    "multi-root",
+    "project",
+    "qadiff",
+    "workspace"
+  ],
+  "dependencies": {
+    "vscode-nls": "^5.0.0"
+  }
+}

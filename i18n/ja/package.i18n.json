@@ -1,0 +1,11 @@
+{
+  "Auto Workspace Creator": "Auto Workspace Creator",
+  "Enable automatic workspace creation when appropriate.": "適切な場合に限ってワークスペースを自動作成します。",
+  "Prompt policy before creating a workspace file.": "ワークスペース作成前の確認ポリシー。",
+  "If the open folder is inside a Git repo, create the workspace at the repo root.": "開いているフォルダがGitレポ内なら、レポジトリ直下に作成します。",
+  "Pattern for naming the workspace file.": "ワークスペースのファイル名パターン。",
+  "Sanitize invalid characters in the generated workspace filename.": "生成されるファイル名から無効文字を除去します。",
+  "Directory traversal limits for workspace detection.": "既存ワークスペース検出のディレクトリ走査上限。",
+  "Path prefixes to ignore for safety.": "安全のために無視するパス接頭辞。",
+  "Presence of any of these files signals a project. Glob patterns supported for *.sln.": "これらのファイルの存在はプロジェクトを示します。*.slnのグロブに対応。"
+}

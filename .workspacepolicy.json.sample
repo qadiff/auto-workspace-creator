@@ -1,0 +1,15 @@
+{
+  "confirmationMode": "askOncePerRepo",
+  "writeToRepoRootIfDetected": true,
+  "ignorePaths": [
+    "~",
+    "/etc",
+    "/var",
+    "/tmp",
+    "node_modules"
+  ],
+  "searchDepth": {
+    "up": 10,
+    "down": 2
+  }
+}
