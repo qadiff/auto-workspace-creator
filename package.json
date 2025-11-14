@@ -120,8 +120,8 @@
   "scripts": {
     "compile": "tsc -p .",
     "watch": "tsc -w -p .",
-    "package": "vsce package",
-    "publish": "vsce publish",
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies",
     "lint": "eslint src test --ext .ts",
     "test": "mocha --require ts-node/register test/**/*.test.ts",
     "test:e2e": "pnpm compile && node ./scripts/e2e.js",
