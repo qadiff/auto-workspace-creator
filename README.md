@@ -1,6 +1,6 @@
 # Auto Workspace Creator
 
-[![Build](https://img.shields.io/badge/build-GitHub%20Actions-brightgreen)](#) [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+[![CI](https://github.com/qadiff/auto-workspace-creator/actions/workflows/ci.yml/badge.svg)](https://github.com/qadiff/auto-workspace-creator/actions/workflows/ci.yml) [![Release](https://github.com/qadiff/auto-workspace-creator/actions/workflows/release.yml/badge.svg)](https://github.com/qadiff/auto-workspace-creator/actions/workflows/release.yml) [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
 # Auto Workspace Creator
 
@@ -26,13 +26,50 @@ Politely auto-create a `.code-workspace` when opening a folder, using safe heuri
 - `autoWorkspaceCreator.ignorePaths` (array) — safety
 - `autoWorkspaceCreator.keyProjectFiles` (array) — project signals
 
-## Build
+## Development
+
+### Setup
 ```bash
-npm i
-npm run compile
-npx vsce package
+pnpm install
+pnpm compile
+pnpm test
+```
+
+### Build
+```bash
+pnpm package
 ```
 A `.vsix` will be created in the project root.
+
+### Release
+
+#### Quick Release
+```bash
+# Automatically bump version, commit, tag, and push
+./scripts/release.sh patch  # 0.0.4 → 0.0.5
+./scripts/release.sh minor  # 0.0.4 → 0.1.0
+./scripts/release.sh major  # 0.0.4 → 1.0.0
+```
+
+#### Manual Release
+```bash
+# Update version in package.json
+npm version patch
+
+# Push tag to trigger GitHub Actions
+git push origin main
+git push origin v0.0.5
+```
+
+See [Release Guide](.github/workflows/RELEASE_GUIDE.md) for details.
+
+### CI/CD
+- **CI**: Runs on every push/PR (lint, compile, test, package)
+- **Release**: Automatically triggered on tag push (`v*`)
+  - Builds extension
+  - Creates GitHub Release
+  - Publishes to VS Code Marketplace (optional)
+  - Publishes to Open VSX Registry (optional)
 
 ---
 
@@ -51,13 +88,50 @@ A `.vsix` will be created in the project root.
 - `Auto Workspace Creator: Find & Open Nearest`（近傍を開く）
 - `Auto Workspace Creator: Enable/Disable`（有効/無効切替）
 
-### ビルド
+### 開発
+
+#### セットアップ
 ```bash
-npm i
-npm run compile
-npx vsce package
+pnpm install
+pnpm compile
+pnpm test
+```
+
+#### ビルド
+```bash
+pnpm package
 ```
 ルートに `.vsix` が生成されます。
+
+#### リリース
+
+##### 簡単リリース
+```bash
+# バージョン更新、コミット、タグ作成、プッシュを自動実行
+./scripts/release.sh patch  # 0.0.4 → 0.0.5
+./scripts/release.sh minor  # 0.0.4 → 0.1.0
+./scripts/release.sh major  # 0.0.4 → 1.0.0
+```
+
+##### 手動リリース
+```bash
+# package.jsonのバージョンを更新
+npm version patch
+
+# タグをプッシュしてGitHub Actionsを起動
+git push origin main
+git push origin v0.0.1
+```
+
+詳細は[リリースガイド](.github/workflows/RELEASE_GUIDE.md)を参照。
+
+### CI/CD
+- **CI**: 全てのpush/PRで実行（lint、コンパイル、テスト、パッケージング）
+- **Release**: タグプッシュ（`v*`）で自動実行
+  - 拡張機能のビルド
+  - GitHub Releaseの作成
+  - VS Code Marketplaceへ公開（オプション）
+  - Open VSX Registryへ公開（オプション）
 
 
 ## Policy File (per-repo overrides)

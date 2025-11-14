@@ -1,28 +1,63 @@
-
-name: Build & Package VSIX
+name: Release
 
 on:
   push:
     tags:
-      - "v*"
-  workflow_dispatch:
+      - 'v*'
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 20
-      - name: Install deps
-        run: npm ci || npm i
+          version: 10.22.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.11.1'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Compile
-        run: npm run compile
-      - name: Package VSIX
-        run: npx vsce package
-      - name: Upload VSIX artifact
-        uses: actions/upload-artifact@v4
+        run: pnpm compile
+
+      - name: Package extension
+        run: pnpm package
+
+      - name: Get version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: vsix
-          path: "*.vsix"
+          files: '*.vsix'
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to VS Code Marketplace
+        if: ${{ !contains(github.ref, 'alpha') && !contains(github.ref, 'beta') }}
+        run: pnpm vsce publish -p ${{ secrets.VSCE_PAT }}
+        continue-on-error: true
+
+      - name: Publish to Open VSX Registry
+        if: ${{ !contains(github.ref, 'alpha') && !contains(github.ref, 'beta') }}
+        run: |
+          pnpm add -D ovsx
+          pnpm ovsx publish -p ${{ secrets.OVSX_PAT }}
+        continue-on-error: true

@@ -3,7 +3,7 @@
   "displayName": "%displayName%",
   "publisher": "qadiff",
   "description": "%description%",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "packageManager": "pnpm@10.22.0",
   "engines": {
     "vscode": "^1.90.0"
@@ -121,9 +121,11 @@
     "compile": "tsc -p .",
     "watch": "tsc -w -p .",
     "package": "vsce package",
+    "publish": "vsce publish",
     "lint": "eslint src test --ext .ts",
     "test": "mocha --require ts-node/register test/**/*.test.ts",
-    "test:e2e": "pnpm compile && node ./scripts/e2e.js"
+    "test:e2e": "pnpm compile && node ./scripts/e2e.js",
+    "vsce": "vsce"
   },
   "devDependencies": {
     "@types/chai": "^4.3.16",
@@ -141,6 +143,14 @@
     "vscode-nls-dev": "^4.0.0"
   },
   "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qadiff/auto-workspace-creator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qadiff/auto-workspace-creator/issues"
+  },
+  "homepage": "https://github.com/qadiff/auto-workspace-creator#readme",
   "keywords": [
     "auto",
     "multi-root",

@@ -1,0 +1,33 @@
+# Build and dev files
+.vscode/**
+.vscode-test/**
+out/test/**
+src/**
+test/**
+test-e2e/**
+scripts/**
+node_modules/**
+
+# Config files
+.gitignore
+.gitattributes
+.editorconfig
+.eslintrc.json
+eslint.config.mjs
+tsconfig.json
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Documentation
+.github/**
+*.md
+!README.md
+!CHANGELOG.md
+!LICENSE
+
+# Misc
+.DS_Store
+*.vsix
+*.log
+
