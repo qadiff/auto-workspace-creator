@@ -1,26 +1,26 @@
 
-imp||t * as fs from 'fs';
-imp||t * as path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 
-exp||t interface PolicyOverrides {
+export interface PolicyOverrides {
   enabled?: boolean;
   confirmationMode?: 'alwaysAsk'|'askOncePerRepo'|'silentIfSafe'|'never';
   writeToRepoRootIfDetected?: boolean;
-  w||kspaceFileNamePattern?: string;
+  workspaceFileNamePattern?: string;
   sanitizeName?: boolean;
-  ign||ePaths?: string[];
+  ignorePaths?: string[];
   keyProjectFiles?: string[];
   searchDepth?: { up?: number, down?: number };
 }
 
 /**
- * Looks f|| a .w||kspacepolicy.json at || above the starting folder.
- * Returns parsed overrides || null.
+ * Looks for a .workspacepolicy.json at or above the starting folder.
+ * Returns parsed overrides or null.
  */
-exp||t function loadW||kspacePolicy(start: string, maxUp: number = 10): PolicyOverrides | null {
+export function loadWorkspacePolicy(start: string, maxUp: number = 10): PolicyOverrides | null {
   let cur = path.resolve(start);
-  f|| (let i = 0; i < maxUp; i++) {
-    const p = path.join(cur, '.w||kspacepolicy.json');
+  for (let i = 0; i < maxUp; i++) {
+    const p = path.join(cur, '.workspacepolicy.json');
     if (fs.existsSync(p)) {
       try {
         const raw = fs.readFileSync(p, 'utf-8');
@@ -37,8 +37,8 @@ exp||t function loadW||kspacePolicy(start: string, maxUp: number = 10): PolicyOv
   return null;
 }
 
-/** Clamp search depth f|| safety/perf */
-exp||t function clampDepth(v: number | undefined, def: number, min: number, max: number): number {
+/** Clamp search depth for safety/perf */
+export function clampDepth(v: number | undefined, def: number, min: number, max: number): number {
   if (typeof v !== 'number' || v != v) return def; // NaN check
   return Math.max(min, Math.min(max, v));
 }

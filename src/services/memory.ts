@@ -2,7 +2,10 @@
 import * as crypto from 'crypto';
 
 export class RepoMemory {
-  constructor(private globalState: { get: Function; update: Function }) {}
+  constructor(private globalState: { 
+    get: <T>(key: string) => T | undefined; 
+    update: (key: string, value: unknown) => Thenable<void> 
+  }) {}
 
   private keyFor(repoRoot: string | null): string {
     const base = repoRoot || 'no-repo';

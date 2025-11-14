@@ -4,6 +4,7 @@
   "publisher": "qadiff",
   "description": "%description%",
   "version": "0.0.4",
+  "packageManager": "pnpm@10.22.0",
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -120,20 +121,24 @@
     "compile": "tsc -p .",
     "watch": "tsc -w -p .",
     "package": "vsce package",
+    "lint": "eslint src test --ext .ts",
     "test": "mocha --require ts-node/register test/**/*.test.ts",
-    "test:e2e": "npm run compile && node ./scripts/e2e.js"
+    "test:e2e": "pnpm compile && node ./scripts/e2e.js"
   },
   "devDependencies": {
-    "typescript": "^5.6.3",
-    "@types/node": "^20.12.12",
-    "vsce": "^2.15.0",
-    "vscode": "^1.1.37",
-    "mocha": "^10.7.3",
-    "@types/mocha": "^10.0.6",
-    "chai": "^4.5.0",
     "@types/chai": "^4.3.16",
-    "vscode-nls-dev": "^4.0.0",
-    "ts-node": "^10.9.2"
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.12.12",
+    "@types/vscode": "^1.106.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.4",
+    "@typescript-eslint/parser": "^8.46.4",
+    "@vscode/vsce": "^3.7.0",
+    "chai": "^4.5.0",
+    "eslint": "^9.39.1",
+    "mocha": "^10.7.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "vscode-nls-dev": "^4.0.0"
   },
   "icon": "icon.png",
   "keywords": [
@@ -145,5 +150,8 @@
   ],
   "dependencies": {
     "vscode-nls": "^5.0.0"
+  },
+  "volta": {
+    "node": "24.11.1"
   }
 }
