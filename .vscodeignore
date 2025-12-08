@@ -1,0 +1,15 @@
+# Exclude development and CI assets from the VSIX
+.git
+.github/**
+.vscode/**
+test/**
+test-e2e/**
+scripts/**
+src/**
+pnpm-lock.yaml
+pnpm-workspace.yaml
+tsconfig.json
+eslint.config.mjs
+.workspacepolicy.json.sample
+.gitignore
+
