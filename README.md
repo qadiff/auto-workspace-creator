@@ -75,7 +75,7 @@ See [Release Guide](.github/workflows/RELEASE_GUIDE.md) for details.
 
 ## 日本語
 
-フォルダを開いた際、**安全な条件**を満たす場合のみ `.code-workspace` を**上品に自動作成**し、ワークスペースとして**開き直し**ます。
+フォルダを開いた際、**安全な条件**を満たす場合のみ `.code-workspace` を**自動作成**し、ワークスペースとして**開き直し**ます。
 
 ### 機能
 - 親/子の `*.code-workspace` を探索して**重複作成を回避**
