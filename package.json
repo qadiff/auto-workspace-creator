@@ -3,8 +3,7 @@
   "displayName": "%displayName%",
   "publisher": "qadiff",
   "description": "%description%",
-  "version": "0.0.3",
-  "packageManager": "pnpm@10.25.0+sha512.5e82639027af37cf832061bcc6d639c219634488e0f2baebe785028a793de7b525ffcd3f7ff574f5e9860654e098fe852ba8ac5dd5cefe1767d23a020a92f501",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.106.0"
   },
@@ -101,7 +100,6 @@
           "default": [
             ".git",
             "package.json",
-            "pnpm-workspace.yaml",
             "pyproject.toml",
             "requirements.txt",
             "Pipfile",
@@ -119,11 +117,11 @@
   "scripts": {
     "compile": "tsc -p .",
     "watch": "tsc -w -p .",
-    "package": "vsce package --no-dependencies",
-    "publish": "vsce publish --no-dependencies",
+    "package": "vsce package",
+    "publish": "vsce publish",
     "lint": "eslint src test --ext .ts",
     "test": "mocha --require ts-node/register test/**/*.test.ts",
-    "test:e2e": "pnpm compile && node ./scripts/e2e.js",
+    "test:e2e": "npm run compile && node ./scripts/e2e.js",
     "vsce": "vsce"
   },
   "devDependencies": {

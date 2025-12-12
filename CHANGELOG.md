@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.4
+- Fix: VSIX now bundles `vscode-nls` (activation failure/`command not found` in remote environments resolved).
+- Packaging scripts updated to avoid `--no-dependencies` so runtime deps are included.
+- Housekeeping: version bump and release notes.
+
 ## 0.0.3
 - Dev tooling updates (pnpm 10.25.x, `@typescript-eslint/*`).
 - Added VS Code test runner support via `@vscode/test-electron`.
