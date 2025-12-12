@@ -30,14 +30,14 @@ Politely auto-create a `.code-workspace` when opening a folder, using safe heuri
 
 ### Setup
 ```bash
-pnpm install
-pnpm compile
-pnpm test
+npm ci
+npm run compile
+npm test
 ```
 
 ### Build
 ```bash
-pnpm package
+npm run package
 ```
 A `.vsix` will be created in the project root.
 
@@ -92,14 +92,14 @@ See [Release Guide](.github/workflows/RELEASE_GUIDE.md) for details.
 
 #### セットアップ
 ```bash
-pnpm install
-pnpm compile
-pnpm test
+npm ci
+npm run compile
+npm test
 ```
 
 #### ビルド
 ```bash
-pnpm package
+npm run package
 ```
 ルートに `.vsix` が生成されます。
 
