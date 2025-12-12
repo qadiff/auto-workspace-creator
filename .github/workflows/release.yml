@@ -16,23 +16,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: "lts/*"
-          cache: 'pnpm'
+          node-version: '24.x'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Compile
-        run: pnpm compile
+        run: npm run compile
 
       - name: Package extension
-        run: pnpm package
+        run: npm run package
 
       - name: Get version from tag
         id: get_version
@@ -50,12 +47,12 @@ jobs:
 
       - name: Publish to VS Code Marketplace
         if: ${{ !contains(github.ref, 'alpha') && !contains(github.ref, 'beta') }}
-        run: pnpm vsce publish -p ${{ secrets.VSCE_PAT }}
+        run: npx vsce publish -p ${{ secrets.VSCE_PAT }}
         continue-on-error: true
 
       - name: Publish to Open VSX Registry
         if: ${{ !contains(github.ref, 'alpha') && !contains(github.ref, 'beta') }}
         run: |
-          pnpm add -D ovsx
-          pnpm ovsx publish -p ${{ secrets.OVSX_PAT }}
+          npm install -D ovsx
+          npx ovsx publish -p ${{ secrets.OVSX_PAT }}
         continue-on-error: true
