@@ -82,7 +82,7 @@ async function maybeCreate(context: vscode.ExtensionContext) {
   
   if (decision.ask) {
     const result = await confirmCreate(decision.workspacePath!);
-    if (!result) {
+    if (result !== 'yes') {
       if (cfg.confirmationMode === 'askOncePerRepo') {
         await memory.setDecision(decision.repoRoot, 'deny');
       }
