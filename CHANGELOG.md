@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.5
+- **Fix:** Choosing **Not Now** on the create-workspace prompt no longer creates or reopens a workspace; the confirmation result was treated as a boolean while `confirmCreate` returns `'yes' | 'no'` ([#25](https://github.com/qadiff/auto-workspace-creator/issues/25)).
+- **Maintenance:** Dev dependency updates (e.g. ESLint toolchain, TypeScript, `glob`, Chai, `@types/node`).
+- **CI:** GitHub Actions updated (`actions/setup-node` v6, `actions/upload-artifact` v6).
+
 ## 0.0.4
 - Fix: VSIX now bundles `vscode-nls` (activation failure/`command not found` in remote environments resolved).
 - Packaging scripts updated to avoid `--no-dependencies` so runtime deps are included.
