@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+- **Breaking:** Minimum supported VS Code raised to **1.120.0** (`engines.vscode` and `@types/vscode` bumped from `^1.110.0`). Installs on VS Code older than 1.120 will stay on the previous release.
+- **Maintenance:** Dev dependencies updated to latest — TypeScript 6, ESLint 10, `@vscode/test-electron` 3, `@vscode/vsce` 3.9, `@types/node` 25, `@typescript-eslint` 8.61, mocha, tsx, Chai, `glob`.
+- **CI:** `actions/upload-artifact` v6 → v7; `softprops/action-gh-release` v2 → v3.
+
 ## 0.0.5
 - **Fix:** Choosing **Not Now** on the create-workspace prompt no longer creates or reopens a workspace; the confirmation result was treated as a boolean while `confirmCreate` returns `'yes' | 'no'` ([#25](https://github.com/qadiff/auto-workspace-creator/issues/25)).
 - **Maintenance:** Dev dependency updates (e.g. ESLint toolchain, TypeScript, `glob`, Chai, `@types/node`).
